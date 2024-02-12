@@ -1,5 +1,6 @@
-package br.com.rafaoliveira.certificartion_nlw_expert.modules.students.entities;
+package br.com.rafaoliveira.certificartion_nlw_expert.modules.questions.entities;
 
+import br.com.rafaoliveira.certificartion_nlw_expert.modules.students.entities.CertificationStudentEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,19 +14,18 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "students")
-public class StudentEntity {
+@Entity(name = "alternatives")
+public class AlternativesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(unique = true, nullable = false, length = 100)
-    private String email;
+    @Column
+    private String description;
 
-    @OneToMany(mappedBy = "studentEntity")
-    private List<CertificationStudentEntity> certificationsStudentEntity;
+    @Column(name = "is_correct")
+    private boolean isCorrect;
 
     @CreationTimestamp
     private LocalDate createdAt;
-
 }
