@@ -1,0 +1,19 @@
+  # O Docker Compose é uma ferramenta para definir e executar aplicativos Docker de vários contêineres.
+  # Ele permite que você defina todos os serviços, redes e volumes em um arquivo chamado docker-compose.yml,
+  # e, em seguida, com um único comando, inicie todo o ambiente definido nesse arquivo.
+version: '3.8'
+
+services:
+  postgres_nlw:
+    container_name: postgres_nlw
+    image: postgres
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=db_nlw_expert_certification
+
+#  quando você executar docker-compose up, o Docker Compose criará um contêiner do PostgreSQL usando a imagem oficial,
+# configurará o usuário, senha e banco de dados conforme especificado
+# e mapeará a porta 5434 do host para a porta 5432 do contêiner.
